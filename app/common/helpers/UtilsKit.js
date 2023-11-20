@@ -24,3 +24,15 @@ export default function getSegmentPercentagePerTotal(data, period) {
 
   return { totalOfPeriod, percentages };
 }
+
+export function CalculatePortionStartingPoints(percentages) {
+  const cumulativePercentages = {};
+  let cumulativePercentage = 0;
+
+  Object.keys(percentages).forEach((segment) => {
+    cumulativePercentage += percentages[segment];
+    cumulativePercentages[segment] = cumulativePercentage;
+    cumulativePercentages;
+  });
+  return cumulativePercentages;
+}

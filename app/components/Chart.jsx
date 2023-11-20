@@ -1,4 +1,6 @@
-import getSegmentPercentagePerTotal from "../common/helpers/UtilsKit";
+import getSegmentPercentagePerTotal, {
+  CalculatePortionStartingPoints,
+} from "../common/helpers/UtilsKit";
 
 export default function Chart({ data }) {
   const { totalOfPeriod: total_1M, percentages: percentages_1M } =
@@ -10,14 +12,36 @@ export default function Chart({ data }) {
   const { totalOfPeriod: total_All, percentages: percentages_All } =
     getSegmentPercentagePerTotal(data, "ALL TIME");
 
-  console.log(total_1M, percentages_1M);
-  console.log(total_6M, percentages_6M);
-  console.log(total_1Y, percentages_1Y);
-  console.log(total_All, percentages_All);
+  //   console.log(total_1M, percentages_1M);
+  //   console.log(total_6M, percentages_6M);
+  //   console.log(total_1Y, percentages_1Y);
+  //   console.log(total_All, percentages_All);
+
+  const PORTION_COLORS = {
+    personal: "border-primary",
+    shopping: "border-secondary",
+    phone: "border-tertiary",
+    other: "border-accent",
+  };
+
+  const portionStartingPoints_1Y =
+    CalculatePortionStartingPoints(percentages_1Y);
+  console.log(portionStartingPoints_1Y);
+  
   return (
-    <div className="border-8 rounded-full border-primary">
-      <div className="rounded-full w-full h-full p-44 bg-gray-100">
-        {/* {percentage} */}
+    // <div className="w-100 h-100 relative">
+    //   {portions}
+    //   <div className="relative rounded-full p-8 bg-gray-100">{total_1M}</div>
+    // </div>
+    <div class="flex items-center justify-center rounded-full h-screen">
+      <div class="relative w-48 h-48 rounded-full">
+        <div
+          class="absolute w-full rounded-full h-full"
+          style={{
+            background:
+              "conic-gradient(#3490dc 0% 25%, #38a169 25% 50%, #f6e05e 50% 75%, #e53e3e 75% 100%)",
+          }}
+        ></div>
       </div>
     </div>
   );
