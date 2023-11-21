@@ -1,10 +1,13 @@
+"use client";
+import { useState } from "react";
 import getSegmentPercentagePerTotal, {
   CalculatePortionStartingPoints,
   generateConicGradientString,
 } from "./common/helpers/UtilsKit";
 import CategoryDescription from "./components/CategoryDescription";
 import Chart from "./components/Chart";
-import TabNavigationWithRoutes from "./components/TabNavigationWithRoutes";
+import TabNavigation from "./components/TabNavigation";
+import AllTimePieChart from "./components/AllTimePieChart";
 
 const EXPENSE_DATA = [
   {
@@ -43,6 +46,34 @@ const PORTION_COLORS = {
   other: "#141197",
 };
 
+const tabs = [
+  {
+    name: "ALL TIME",
+    key: "ALL_TIME",
+    href: "/all-time",
+    current: true,
+    component: AllTimePieChart,
+  },
+  {
+    name: "1M",
+    key: "1M",
+    href: "/1M",
+    current: false,
+  },
+  {
+    name: "6M",
+    key: "6M",
+    href: "/6M",
+    current: false,
+  },
+  {
+    name: "1Y",
+    key: "1Y",
+    href: "/1Y",
+    current: false,
+  },
+];
+
 export default function Home() {
   const { totalOfPeriod: total_1M, percentages: percentages_1M } =
     getSegmentPercentagePerTotal(EXPENSE_DATA, "1M");
@@ -55,27 +86,36 @@ export default function Home() {
 
   const portionStartingPoints_1Y =
     CalculatePortionStartingPoints(percentages_1Y);
-  console.log(portionStartingPoints_1Y);
 
   const gradientString = generateConicGradientString(
     portionStartingPoints_1Y,
     PORTION_COLORS
   );
-  console.log(gradientString);
+  const [selectedTab, setSelectedTab] = useState(tabs[0].key);
+  function SelectedComponent(props) {
+    const Component = tabs.find((tab) => tab.key === selectedTab).component;
+    return Component ? (
+      <Component
+        data={EXPENSE_DATA}
+        total={total_1M}
+        gradientString={gradientString}
+        {...props}
+      />
+    ) : null;
+  }
   return (
     <div className="flex flex-col justify-center items-center h-full py-10 bg-secondary">
       <h2 className="text-5xl font-bold text-white pb-10">Expense Chart</h2>
-      <div className="bg-white h-1/4 px-4 sm:px-10 md:px-40 rounded-3xl z-10">
+      <div className="bg-white h-1/4 px-4 sm:px-10 md:px-40 rounded-3xl relative z-10">
         <div className="flex gap-4 flex-col justify-center items-center top-20 relative z-50">
           <h2 className="text-xl font-semibold text-gray-700">Expenses</h2>
-          <TabNavigationWithRoutes />
+          <TabNavigation
+            tabs={tabs}
+            current={selectedTab}
+            setTab={setSelectedTab}
+          />
         </div>
-        <div className="relative -top-32">
-          <Chart data={EXPENSE_DATA} gradientString={gradientString} />
-        </div>
-        <div className="relative -top-80 flex justify-center">
-          <CategoryDescription />
-        </div>
+        <div className="py-4">{SelectedComponent()}</div>
       </div>
     </div>
   );
