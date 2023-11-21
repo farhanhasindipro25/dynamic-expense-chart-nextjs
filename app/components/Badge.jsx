@@ -2,7 +2,7 @@ import { cva } from "class-variance-authority";
 import { cn } from "../common/helpers/UtilsKit";
 
 const DEFAULT_BADGE_STYLES =
-  "h-fit inline-flex items-center font-semibold shadow-sm rounded-full px-5 py-2 text-xs w-fit";
+  "h-fit inline-flex items-center font-semibold shadow-sm rounded-full px-8 py-3 text-xs w-fit";
 const PRIMARY_BADGE_STYLES = "bg-primary";
 const SECONDARY_BADGE_STYLES = "bg-secondary";
 const TERTIARY_BADGE_STYLES = "bg-tertiary";

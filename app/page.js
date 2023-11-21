@@ -37,9 +37,9 @@ const EXPENSE_DATA = [
 ];
 const PORTION_COLORS = {
   personal: "#4C49ED",
-  shopping: "#141197",
-  phone: "#9D9BF4",
-  other: "#4FD18B",
+  shopping: "#9D9BF4",
+  phone: "#4FD18B",
+  other: "#141197",
 };
 
 export default function Home() {
