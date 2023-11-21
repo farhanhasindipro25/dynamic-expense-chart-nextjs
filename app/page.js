@@ -61,8 +61,10 @@ export default function Home() {
   );
   console.log(gradientString);
   return (
-    <div>
-      <Chart data={EXPENSE_DATA} gradientString={gradientString} />
+    <div className="bg-white w-1/2 h-3/4 rounded-3xl absolute">
+      <div className="relative -top-28">
+        <Chart data={EXPENSE_DATA} gradientString={gradientString} />
+      </div>
     </div>
   );
 }
