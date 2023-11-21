@@ -62,16 +62,3 @@ export function generateConicGradientString(percentage, color) {
   const gradientString = `conic-gradient(${personalSegmentString}, ${shoppingSegmentString}, ${phoneSegmentString}, ${otherSegmentString})`;
   return gradientString;
 }
-
-// export function CalculatePortionStartingPoints(percentages, colors) {
-//   const cumulativePercentages = {};
-//   let cumulativePercentage = 0;
-
-//   const gradientStops = Object.keys(percentages).map((segment) => {
-//     cumulativePercentage += percentages[segment];
-//     cumulativePercentages[segment] = cumulativePercentage;
-//     return `${segment} ${cumulativePercentage}%`;
-//   });
-
-//   //   return `conic-gradient(${gradientStops.join(", ")})`;
-// }

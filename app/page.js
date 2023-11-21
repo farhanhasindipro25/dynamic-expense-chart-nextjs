@@ -1,3 +1,7 @@
+import getSegmentPercentagePerTotal, {
+  CalculatePortionStartingPoints,
+  generateConicGradientString,
+} from "./common/helpers/UtilsKit";
 import Chart from "./components/Chart";
 
 const EXPENSE_DATA = [
@@ -30,11 +34,35 @@ const EXPENSE_DATA = [
     other: 1000,
   },
 ];
+const PORTION_COLORS = {
+  personal: "#4C49ED",
+  shopping: "#141197",
+  phone: "#9D9BF4",
+  other: "#4FD18B",
+};
 
 export default function Home() {
+  const { totalOfPeriod: total_1M, percentages: percentages_1M } =
+    getSegmentPercentagePerTotal(EXPENSE_DATA, "1M");
+  const { totalOfPeriod: total_6M, percentages: percentages_6M } =
+    getSegmentPercentagePerTotal(EXPENSE_DATA, "6M");
+  const { totalOfPeriod: total_1Y, percentages: percentages_1Y } =
+    getSegmentPercentagePerTotal(EXPENSE_DATA, "1Y");
+  const { totalOfPeriod: total_All, percentages: percentages_All } =
+    getSegmentPercentagePerTotal(EXPENSE_DATA, "ALL TIME");
+
+  const portionStartingPoints_1Y =
+    CalculatePortionStartingPoints(percentages_1Y);
+  console.log(portionStartingPoints_1Y);
+
+  const gradientString = generateConicGradientString(
+    portionStartingPoints_1Y,
+    PORTION_COLORS
+  );
+  console.log(gradientString);
   return (
     <div>
-      <Chart data={EXPENSE_DATA} />
+      <Chart data={EXPENSE_DATA} gradientString={gradientString} />
     </div>
   );
 }
