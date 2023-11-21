@@ -43,11 +43,11 @@ export function CalculatePortionStartingPoints(percentages) {
 export function generateConicGradientString(percentage, color) {
   const personalStartingPoint = 0;
   const personalEndingPoint = percentage.personal;
-  const shoppingStartingPoint = percentage.personal + 1;
+  const shoppingStartingPoint = percentage.personal;
   const shoppingEndingPoint = percentage.shopping;
-  const phoneStartingPoint = percentage.shopping + 1;
+  const phoneStartingPoint = percentage.shopping;
   const phoneEndingPoint = percentage.phone;
-  const otherStartingPoint = percentage.phone + 1;
+  const otherStartingPoint = percentage.phone;
   const otherEndingPoint = percentage.other;
 
   const personalSegmentString = `${color["personal"]} ${parseFloat(

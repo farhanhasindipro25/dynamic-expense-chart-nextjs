@@ -110,11 +110,15 @@ export default function Home() {
   const [selectedTab, setSelectedTab] = useState(tabs[0].key);
 
   return (
-    <div className="flex flex-col justify-center items-center h-full py-10 bg-secondary">
-      <h2 className="text-5xl font-bold text-white pb-10">Expense Chart</h2>
-      <div className="bg-white h-1/4 px-4 sm:px-10 md:px-40 rounded-3xl relative z-10">
+    <div className="flex flex-col justify-center items-center h-full py-10 px-6 bg-secondary">
+      <h2 className="text-xl md:text-3xl lg:text-5xl font-bold text-white pb-10">
+        Expense Chart
+      </h2>
+      <div className="bg-white h-1/4 px-2 sm:px-6 md:px-40 rounded-3xl relative z-10">
         <div className="flex gap-4 flex-col justify-center items-center top-20 relative z-50">
-          <h2 className="text-xl font-semibold text-gray-700">Expenses</h2>
+          <h2 className="text-base md:text-lg lg:text-2xl font-semibold text-gray-700">
+            Expenses
+          </h2>
           <TabNavigation
             tabs={tabs}
             current={selectedTab}
