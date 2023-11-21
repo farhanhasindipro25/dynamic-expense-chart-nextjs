@@ -114,7 +114,7 @@ export default function Home() {
       <h2 className="text-xl md:text-3xl lg:text-5xl font-bold text-white pb-10">
         Expense Chart
       </h2>
-      <div className="bg-white h-1/4 px-2 sm:px-6 md:px-40 rounded-3xl relative z-10">
+      <div className="bg-white h-1/4 px-2 sm:px-28 md:px-40 rounded-3xl relative z-10">
         <div className="flex gap-4 flex-col justify-center items-center top-20 relative z-50">
           <h2 className="text-base md:text-lg lg:text-2xl font-semibold text-gray-700">
             Expenses
