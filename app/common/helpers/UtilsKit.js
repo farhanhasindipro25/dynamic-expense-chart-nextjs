@@ -1,3 +1,6 @@
+import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export default function getSegmentPercentagePerTotal(data, period) {
   const targetPeriod = data.find((item) => item.period === period);
 
@@ -61,4 +64,9 @@ export function generateConicGradientString(percentage, color) {
   ).toFixed(2)}% ${parseFloat(otherEndingPoint).toFixed(2)}%`;
   const gradientString = `conic-gradient(${personalSegmentString}, ${shoppingSegmentString}, ${phoneSegmentString}, ${otherSegmentString})`;
   return gradientString;
+}
+
+// tailwindcss classNames management
+export function cn(...classnames) {
+  return twMerge(clsx(classnames));
 }

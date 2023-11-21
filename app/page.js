@@ -2,6 +2,7 @@ import getSegmentPercentagePerTotal, {
   CalculatePortionStartingPoints,
   generateConicGradientString,
 } from "./common/helpers/UtilsKit";
+import CategoryDescription from "./components/CategoryDescription";
 import Chart from "./components/Chart";
 
 const EXPENSE_DATA = [
@@ -64,6 +65,9 @@ export default function Home() {
     <div className="bg-white w-1/2 h-3/4 rounded-3xl absolute">
       <div className="relative -top-28">
         <Chart data={EXPENSE_DATA} gradientString={gradientString} />
+      </div>
+      <div className="relative -top-80 flex justify-center">
+        <CategoryDescription />
       </div>
     </div>
   );
