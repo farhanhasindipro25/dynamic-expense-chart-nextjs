@@ -36,3 +36,42 @@ export function CalculatePortionStartingPoints(percentages) {
   });
   return cumulativePercentages;
 }
+
+export function generateConicGradientString(percentage, color) {
+  const personalStartingPoint = 0;
+  const personalEndingPoint = percentage.personal;
+  const shoppingStartingPoint = percentage.personal + 1;
+  const shoppingEndingPoint = percentage.shopping;
+  const phoneStartingPoint = percentage.shopping + 1;
+  const phoneEndingPoint = percentage.phone;
+  const otherStartingPoint = percentage.phone + 1;
+  const otherEndingPoint = percentage.other;
+
+  const personalSegmentString = `${color["personal"]} ${parseFloat(
+    personalStartingPoint
+  ).toFixed(2)}% ${parseFloat(personalEndingPoint).toFixed(2)}%`;
+  const shoppingSegmentString = `${color["shopping"]} ${parseFloat(
+    shoppingStartingPoint
+  ).toFixed(2)}% ${parseFloat(shoppingEndingPoint).toFixed(2)}%`;
+  const phoneSegmentString = `${color["phone"]} ${parseFloat(
+    phoneStartingPoint
+  ).toFixed(2)}% ${parseFloat(phoneEndingPoint).toFixed(2)}%`;
+  const otherSegmentString = `${color["other"]} ${parseFloat(
+    otherStartingPoint
+  ).toFixed(2)}% ${parseFloat(otherEndingPoint).toFixed(2)}%`;
+  const gradientString = `conic-gradient(${personalSegmentString}, ${shoppingSegmentString}, ${phoneSegmentString}, ${otherSegmentString})`;
+  return gradientString;
+}
+
+// export function CalculatePortionStartingPoints(percentages, colors) {
+//   const cumulativePercentages = {};
+//   let cumulativePercentage = 0;
+
+//   const gradientStops = Object.keys(percentages).map((segment) => {
+//     cumulativePercentage += percentages[segment];
+//     cumulativePercentages[segment] = cumulativePercentage;
+//     return `${segment} ${cumulativePercentage}%`;
+//   });
+
+//   //   return `conic-gradient(${gradientStops.join(", ")})`;
+// }

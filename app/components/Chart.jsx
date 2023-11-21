@@ -1,5 +1,6 @@
 import getSegmentPercentagePerTotal, {
   CalculatePortionStartingPoints,
+  generateConicGradientString,
 } from "../common/helpers/UtilsKit";
 
 export default function Chart({ data }) {
@@ -18,16 +19,27 @@ export default function Chart({ data }) {
   //   console.log(total_All, percentages_All);
 
   const PORTION_COLORS = {
-    personal: "border-primary",
-    shopping: "border-secondary",
-    phone: "border-tertiary",
-    other: "border-accent",
+    personal: "#4C49ED",
+    shopping: "#141197",
+    phone: "#9D9BF4",
+    other: "#4FD18B",
   };
-
   const portionStartingPoints_1Y =
     CalculatePortionStartingPoints(percentages_1Y);
   console.log(portionStartingPoints_1Y);
-  
+
+  const gradientString = generateConicGradientString(
+    portionStartingPoints_1Y,
+    PORTION_COLORS
+  );
+  console.log(gradientString);
+
+  //   const gradientString = CalculatePortionStartingPoints(
+  //     percentages_1M,
+  //     PORTION_COLORS
+  //   );
+  //   console.log(gradientString);
+
   return (
     // <div className="w-100 h-100 relative">
     //   {portions}
@@ -38,8 +50,8 @@ export default function Chart({ data }) {
         <div
           class="absolute w-full rounded-full h-full"
           style={{
-            background:
-              "conic-gradient(#3490dc 0% 25%, #38a169 25% 50%, #f6e05e 50% 75%, #e53e3e 75% 100%)",
+            background: gradientString,
+            //   "conic-gradient(#3490dc 0% 25%, #38a169 25% 50%, #f6e05e 50% 75%, #e53e3e 75% 100%)",
           }}
         ></div>
       </div>
