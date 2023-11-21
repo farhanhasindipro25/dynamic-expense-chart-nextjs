@@ -7,7 +7,6 @@ import getSegmentPercentagePerTotal, {
 import CategoryDescription from "./components/CategoryDescription";
 import Chart from "./components/Chart";
 import TabNavigation from "./components/TabNavigation";
-import AllTimePieChart from "./components/AllTimePieChart";
 
 const EXPENSE_DATA = [
   {
@@ -52,7 +51,6 @@ const tabs = [
     key: "ALL_TIME",
     href: "/all-time",
     current: true,
-    component: AllTimePieChart,
   },
   {
     name: "1M",
@@ -84,25 +82,33 @@ export default function Home() {
   const { totalOfPeriod: total_All, percentages: percentages_All } =
     getSegmentPercentagePerTotal(EXPENSE_DATA, "ALL TIME");
 
+  const portionStartingPoints_1M =
+    CalculatePortionStartingPoints(percentages_1M);
+  const portionStartingPoints_6M =
+    CalculatePortionStartingPoints(percentages_6M);
   const portionStartingPoints_1Y =
     CalculatePortionStartingPoints(percentages_1Y);
+  const portionStartingPoints_All =
+    CalculatePortionStartingPoints(percentages_All);
 
-  const gradientString = generateConicGradientString(
+  const gradientString_1M = generateConicGradientString(
+    portionStartingPoints_1M,
+    PORTION_COLORS
+  );
+  const gradientString_6M = generateConicGradientString(
+    portionStartingPoints_6M,
+    PORTION_COLORS
+  );
+  const gradientString_1Y = generateConicGradientString(
     portionStartingPoints_1Y,
     PORTION_COLORS
   );
+  const gradientString_All = generateConicGradientString(
+    portionStartingPoints_All,
+    PORTION_COLORS
+  );
   const [selectedTab, setSelectedTab] = useState(tabs[0].key);
-  function SelectedComponent(props) {
-    const Component = tabs.find((tab) => tab.key === selectedTab).component;
-    return Component ? (
-      <Component
-        data={EXPENSE_DATA}
-        total={total_1M}
-        gradientString={gradientString}
-        {...props}
-      />
-    ) : null;
-  }
+
   return (
     <div className="flex flex-col justify-center items-center h-full py-10 bg-secondary">
       <h2 className="text-5xl font-bold text-white pb-10">Expense Chart</h2>
@@ -115,7 +121,39 @@ export default function Home() {
             setTab={setSelectedTab}
           />
         </div>
-        <div className="py-4">{SelectedComponent()}</div>
+        <div className="relative -top-32">
+          {selectedTab === "ALL_TIME" ? (
+            <Chart
+              data={EXPENSE_DATA}
+              gradientString={gradientString_All}
+              total={total_All}
+            />
+          ) : null}
+          {selectedTab === "1M" ? (
+            <Chart
+              data={EXPENSE_DATA}
+              gradientString={gradientString_1M}
+              total={total_1M}
+            />
+          ) : null}
+          {selectedTab === "6M" ? (
+            <Chart
+              data={EXPENSE_DATA}
+              gradientString={gradientString_6M}
+              total={total_6M}
+            />
+          ) : null}
+          {selectedTab === "1Y" ? (
+            <Chart
+              data={EXPENSE_DATA}
+              gradientString={gradientString_1Y}
+              total={total_1Y}
+            />
+          ) : null}
+        </div>
+        <div className="relative -top-80 flex justify-center">
+          <CategoryDescription />
+        </div>
       </div>
     </div>
   );
