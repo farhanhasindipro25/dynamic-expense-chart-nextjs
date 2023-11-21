@@ -4,6 +4,7 @@ import getSegmentPercentagePerTotal, {
 } from "./common/helpers/UtilsKit";
 import CategoryDescription from "./components/CategoryDescription";
 import Chart from "./components/Chart";
+import TabNavigationWithRoutes from "./components/TabNavigationWithRoutes";
 
 const EXPENSE_DATA = [
   {
@@ -62,12 +63,19 @@ export default function Home() {
   );
   console.log(gradientString);
   return (
-    <div className="bg-white w-1/2 h-3/4 rounded-3xl absolute">
-      <div className="relative -top-28">
-        <Chart data={EXPENSE_DATA} gradientString={gradientString} />
-      </div>
-      <div className="relative -top-80 flex justify-center">
-        <CategoryDescription />
+    <div className="flex flex-col justify-center items-center h-full py-10 bg-secondary">
+      <h2 className="text-5xl font-bold text-white pb-10">Expense Chart</h2>
+      <div className="bg-white h-1/4 px-4 sm:px-10 md:px-40 rounded-3xl z-10">
+        <div className="flex gap-4 flex-col justify-center items-center top-20 relative z-50">
+          <h2 className="text-xl font-semibold text-gray-700">Expenses</h2>
+          <TabNavigationWithRoutes />
+        </div>
+        <div className="relative -top-32">
+          <Chart data={EXPENSE_DATA} gradientString={gradientString} />
+        </div>
+        <div className="relative -top-80 flex justify-center">
+          <CategoryDescription />
+        </div>
       </div>
     </div>
   );

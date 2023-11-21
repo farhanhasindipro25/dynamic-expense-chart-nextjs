@@ -1,9 +1,9 @@
-export default function Chart({ data, gradientString }) {
+export default function Chart({ gradientString }) {
   return (
     <div class="flex items-center justify-center rounded-full h-screen">
-      <div class="relative w-96 h-96 rounded-full">
+      <div class="w-96 h-96 rounded-full">
         <div
-          class="absolute w-full rounded-full h-full"
+          class="w-full rounded-full h-full"
           style={{
             background: gradientString,
           }}
