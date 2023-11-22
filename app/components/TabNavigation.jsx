@@ -10,7 +10,7 @@ const DEFAULT_TAB_STYLES = "font-medium text-gray-500";
 
 export default function TabNavigation({ tabs, current, setTab }) {
   return (
-    <ul className="flex justify-center sm:py-4 p-2 sm:px-10 rounded-full gap-8 bg-gray-100">
+    <ul className="flex justify-center sm:py-2 p-2 sm:px-6 rounded-full gap-8 bg-gray-100">
       {tabs?.map((tab) => (
         <li
           key={tab.name}

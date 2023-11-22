@@ -115,7 +115,7 @@ export default function Home() {
         Expense Chart
       </h2>
       <div className="bg-white h-1/4 px-2 sm:px-28 md:px-40 rounded-3xl relative z-10">
-        <div className="flex gap-4 flex-col justify-center items-center top-20 relative z-50">
+        <div className="flex gap-4 flex-col justify-center items-center top-16 relative z-50">
           <h2 className="text-base md:text-lg lg:text-2xl font-semibold text-gray-700">
             Expenses
           </h2>
@@ -125,7 +125,7 @@ export default function Home() {
             setTab={setSelectedTab}
           />
         </div>
-        <div className="relative -top-32">
+        <div className="relative lg:-top-10">
           {selectedTab === "ALL_TIME" ? (
             <Chart
               data={EXPENSE_DATA}
@@ -155,7 +155,7 @@ export default function Home() {
             />
           ) : null}
         </div>
-        <div className="relative -top-80 flex justify-center">
+        <div className="relative -top-14 md:-top-20 lg:-top-44 flex justify-center">
           <CategoryDescription />
         </div>
       </div>
