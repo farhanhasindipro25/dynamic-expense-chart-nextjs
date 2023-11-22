@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Dynamic Expense Chart
 
-## Getting Started
+### Live Link: https://dynamic-expense-chart.vercel.app/
 
-First, run the development server:
+# Project Description:
+- A dynamic pie chart is generated using vanilla Tailwind CSS's conic gradient property without the use of any Javascript libraries to generate the pie chart.
+- A dynamic filtering of time periods. When clicking on a time period, the pie chart shows the dynamic data, where each segment (category) occupies a certain percentage in the pie chart and the total expenses are shown on the middle.
+- Utility functions are maintained to do all necessary calculations.
+- Reusable components are maintained throughout the project.
+- Errors of empty states are handled. e.g. If a value is not passed, etc, then the total value will show 0 instead of breaking.
+- For filtering the dynamic pie chart according to the time periods, the various calculated values as per the time periods are passed into one common reusable chart component.
+- The chart is dynamically rendered based on the current/active tab that the user has currently clicked/selected.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Tools Used
+**Frameworks**
+1. NextJS - A ReactJS framework
+2. TailwindCSS - A utility first CSS framework
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Libraries and Packages**
+1. Tailwind Merge - A utility function to efficiently merge Tailwind CSS classes in Javascript without conflicts in styling.
+2. clsx - A tiny utility for constructing className in JSX conditionally. It is also a better and faster replacement for the classnames module given by NextJS
+3. Class Variance Authority(cva) - A library to manage variants of UI components efficiently
