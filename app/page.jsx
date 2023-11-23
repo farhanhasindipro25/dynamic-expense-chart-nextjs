@@ -110,7 +110,7 @@ export default function Home() {
   const [selectedTab, setSelectedTab] = useState(tabs[0].key);
 
   return (
-    <div className="bg-secondary w-full h-full">
+    <div className="bg-secondary w-full min-h-screen">
       <div className="max-w-3xl mx-auto px-4 py-10">
         <h2 className="text-xl text-center md:text-3xl lg:text-5xl font-bold text-white py-10">
           Expense Chart
