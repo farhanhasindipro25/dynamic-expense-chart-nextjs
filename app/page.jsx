@@ -110,53 +110,107 @@ export default function Home() {
   const [selectedTab, setSelectedTab] = useState(tabs[0].key);
 
   return (
-    <div className="flex flex-col justify-center items-center h-full py-10 px-6 bg-secondary">
-      <h2 className="text-xl md:text-3xl lg:text-5xl font-bold text-white pb-10">
-        Expense Chart
-      </h2>
-      <div className="bg-white h-1/4 px-2 sm:px-28 md:px-40 rounded-3xl relative z-10">
-        <div className="flex gap-4 flex-col justify-center items-center top-16 relative z-50">
-          <h2 className="text-base md:text-lg lg:text-2xl font-semibold text-gray-700">
+    // <div className="flex flex-col justify-center items-center h-full py-10 px-6 bg-secondary">
+    // <h2 className="text-xl md:text-3xl lg:text-5xl font-bold text-white pb-10">
+    //   Expense Chart
+    // </h2>
+    //   <div className="bg-white h-1/4 px-2 sm:px-28 md:px-40 rounded-3xl relative z-10">
+    //     <div className="flex gap-4 flex-col justify-center items-center top-16 relative z-50">
+    // <h2 className="text-base md:text-lg lg:text-2xl font-semibold text-gray-700">
+    //   Expenses
+    // </h2>
+    // <TabNavigation
+    //   tabs={tabs}
+    //   current={selectedTab}
+    //   setTab={setSelectedTab}
+    // />
+    //     </div>
+    // <div className="relative lg:-top-10">
+    //   {selectedTab === "ALL_TIME" ? (
+    //     <Chart
+    //       data={EXPENSE_DATA}
+    //       gradientString={gradientString_All}
+    //       total={total_All}
+    //     />
+    //   ) : null}
+    //   {selectedTab === "1M" ? (
+    //     <Chart
+    //       data={EXPENSE_DATA}
+    //       gradientString={gradientString_1M}
+    //       total={total_1M}
+    //     />
+    //   ) : null}
+    //   {selectedTab === "6M" ? (
+    //     <Chart
+    //       data={EXPENSE_DATA}
+    //       gradientString={gradientString_6M}
+    //       total={total_6M}
+    //     />
+    //   ) : null}
+    //   {selectedTab === "1Y" ? (
+    //     <Chart
+    //       data={EXPENSE_DATA}
+    //       gradientString={gradientString_1Y}
+    //       total={total_1Y}
+    //     />
+    //   ) : null}
+    // </div>
+    // <div className="relative -top-14 md:-top-20 lg:-top-44 flex justify-center">
+    //   <CategoryDescription />
+    // </div>
+    //   </div>
+    // </div>
+    <div className="bg-secondary w-full h-full">
+      <div className="max-w-3xl mx-auto px-4 py-10">
+        <h2 className="text-xl text-center md:text-3xl lg:text-5xl font-bold text-white py-10">
+          Expense Chart
+        </h2>
+        <div className="bg-white p-8 rounded-3xl space-y-6">
+          <h2 className="text-base text-center md:text-lg lg:text-2xl font-semibold text-gray-700">
             Expenses
           </h2>
-          <TabNavigation
-            tabs={tabs}
-            current={selectedTab}
-            setTab={setSelectedTab}
-          />
-        </div>
-        <div className="relative lg:-top-10">
-          {selectedTab === "ALL_TIME" ? (
-            <Chart
-              data={EXPENSE_DATA}
-              gradientString={gradientString_All}
-              total={total_All}
-            />
-          ) : null}
-          {selectedTab === "1M" ? (
-            <Chart
-              data={EXPENSE_DATA}
-              gradientString={gradientString_1M}
-              total={total_1M}
-            />
-          ) : null}
-          {selectedTab === "6M" ? (
-            <Chart
-              data={EXPENSE_DATA}
-              gradientString={gradientString_6M}
-              total={total_6M}
-            />
-          ) : null}
-          {selectedTab === "1Y" ? (
-            <Chart
-              data={EXPENSE_DATA}
-              gradientString={gradientString_1Y}
-              total={total_1Y}
-            />
-          ) : null}
-        </div>
-        <div className="relative -top-14 md:-top-20 lg:-top-44 flex justify-center">
-          <CategoryDescription />
+          <div className="flex flex-col justify-center">
+            <div className="flex justify-center pb-10">
+              <TabNavigation
+                tabs={tabs}
+                current={selectedTab}
+                setTab={setSelectedTab}
+              />
+            </div>
+            <div>
+              {selectedTab === "ALL_TIME" ? (
+                <Chart
+                  data={EXPENSE_DATA}
+                  gradientString={gradientString_All}
+                  total={total_All}
+                />
+              ) : null}
+              {selectedTab === "1M" ? (
+                <Chart
+                  data={EXPENSE_DATA}
+                  gradientString={gradientString_1M}
+                  total={total_1M}
+                />
+              ) : null}
+              {selectedTab === "6M" ? (
+                <Chart
+                  data={EXPENSE_DATA}
+                  gradientString={gradientString_6M}
+                  total={total_6M}
+                />
+              ) : null}
+              {selectedTab === "1Y" ? (
+                <Chart
+                  data={EXPENSE_DATA}
+                  gradientString={gradientString_1Y}
+                  total={total_1Y}
+                />
+              ) : null}
+            </div>
+            <div className="mx-auto py-10">
+              <CategoryDescription />
+            </div>
+          </div>
         </div>
       </div>
     </div>
